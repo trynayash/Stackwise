@@ -121,12 +121,14 @@ export function Footer() {
                 </div>
 
                 {/* Bottom Section: Massive Brand Name */}
+                {/* Bottom Section: Massive Brand Name */}
                 <div className="pt-24 pb-8 flex justify-center">
                     <h1
-                        className="text-[14vw] leading-[0.8] font-medium text-white tracking-tight text-center select-none pointer-events-none mix-blend-overlay opacity-30"
+                        className="text-[14vw] leading-[0.8] font-medium tracking-tight text-center select-none group cursor-default"
                         style={{ fontFamily: "'Oughter', sans-serif" }}
                     >
-                        STACKWISE
+                        <span className="text-white/20 mix-blend-overlay transition-all duration-700 group-hover:text-[#b6ff00] group-hover:mix-blend-normal group-hover:opacity-100">STACK</span>
+                        <span className="text-white/20 mix-blend-overlay transition-all duration-700 group-hover:text-white group-hover:mix-blend-normal group-hover:opacity-100">WISE</span>
                     </h1>
                 </div>
             </div>

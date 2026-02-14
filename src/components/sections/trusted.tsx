@@ -31,16 +31,16 @@ export function Trusted() {
                         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10" />
 
                         <motion.div
-                            className="flex items-center gap-14 whitespace-nowrap"
+                            className="flex items-center gap-24 md:gap-32 whitespace-nowrap"
                             animate={{ x: ["0%", "-50%"] }}
-                            transition={{ duration: 25, ease: "linear", repeat: Infinity }}
+                            transition={{ duration: 35, ease: "linear", repeat: Infinity }}
                         >
                             {[...logos, ...logos].map((logo, i) => (
                                 <img
                                     key={`${logo.name}-${i}`}
                                     src={logo.src}
                                     alt={logo.name}
-                                    className="h-7 md:h-8 w-auto opacity-25 hover:opacity-60 grayscale hover:grayscale-0 transition-all duration-500 flex-shrink-0"
+                                    className="h-10 md:h-12 w-auto object-contain opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-500 flex-shrink-0"
                                     loading="lazy"
                                 />
                             ))}

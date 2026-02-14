@@ -1,7 +1,6 @@
 <div align="center">
-  <img src="./public/main_logo.png" alt="Stackwise Logo" width="200" />
+  <img src="./public/stackwise-wordmark.svg" alt="Stackwise" width="300" />
   <br />
-  <h1>Stackwise</h1>
   <p><strong>Next-Gen Digital Infrastructure Engineering</strong></p>
   <p>
     <a href="https://stackwise.agency">Live Demo</a> • 

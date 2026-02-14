@@ -1,0 +1,86 @@
+<svg width="800" height="300" viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="300" fill="#0a0a0a"/>
+  
+  <!-- Logo Group -->
+  <g id="stackwise-logo-minimal">
+    
+    <!-- Minimal geometric icon - three stacked blocks forming S -->
+    <g id="minimal-icon" transform="translate(100, 80)">
+      <!-- Top block -->
+      <rect x="0" y="0" width="80" height="25" rx="6" fill="url(#gradient-block1)"/>
+      
+      <!-- Middle block (offset) -->
+      <rect x="20" y="35" width="80" height="25" rx="6" fill="url(#gradient-block2)"/>
+      
+      <!-- Bottom block -->
+      <rect x="0" y="70" width="80" height="25" rx="6" fill="url(#gradient-block3)"/>
+      
+      <!-- Connecting lines/dots -->
+      <circle cx="40" cy="30" r="3" fill="#00d4ff"/>
+      <circle cx="60" cy="65" r="3" fill="#06b6d4"/>
+      <circle cx="40" cy="100" r="3" fill="#a855f7"/>
+      
+      <!-- Subtle glow -->
+      <rect x="0" y="0" width="80" height="25" rx="6" fill="url(#glow1)" opacity="0.3"/>
+      <rect x="20" y="35" width="80" height="25" rx="6" fill="url(#glow2)" opacity="0.3"/>
+      <rect x="0" y="70" width="80" height="25" rx="6" fill="url(#glow3)" opacity="0.3"/>
+    </g>
+    
+    <!-- Text - modern sans -->
+    <g id="text" transform="translate(220, 110)">
+      <text x="0" y="50" 
+            font-family="Inter, sans-serif" 
+            font-size="64" 
+            font-weight="700" 
+            fill="white" 
+            letter-spacing="-1">
+        StackWise
+      </text>
+      <text x="2" y="80" 
+            font-family="Inter, sans-serif" 
+            font-size="14" 
+            font-weight="500" 
+            fill="#737373" 
+            letter-spacing="2">
+        FULL-STACK SOLUTIONS
+      </text>
+    </g>
+    
+  </g>
+  
+  <!-- Gradients and effects -->
+  <defs>
+    <!-- Block gradients -->
+    <linearGradient id="gradient-block1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00b8e6;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="gradient-block2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="gradient-block3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow effects -->
+    <radialGradient id="glow1">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0" />
+    </radialGradient>
+    
+    <radialGradient id="glow2">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0" />
+    </radialGradient>
+    
+    <radialGradient id="glow3">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+</svg>

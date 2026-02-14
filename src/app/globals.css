@@ -1,26 +1,462 @@
+@font-face {
+  font-family: 'Oughter';
+  src: url('/oughter-font/Oughter.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-secondary: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
 
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Brand Colors — Lime/Chartreuse Accent (BeFluence-inspired) */
+  --color-brand-primary: #C8FF00;
+  --color-brand-secondary: #9EFF00;
+  --color-brand-accent: #D4FF33;
+
+  /* Accent — Lime Green System */
+  --color-lime: #C8FF00;
+  --color-lime-light: #D4FF33;
+  --color-lime-dark: #A3D900;
+  --color-lime-muted: rgba(200, 255, 0, 0.15);
+
+  /* Legacy neon names → remapped to lime for compatibility */
+  --color-neon-blue: #C8FF00;
+  --color-neon-cyan: #9EFF00;
+  --color-neon-purple: #C8FF00;
+  --color-neon-pink: #D4FF33;
+  --color-neon-violet: #A3D900;
+
+  /* Glass/Surface Colors */
+  --color-glass-card: rgba(20, 20, 20, 0.6);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+
+  /* Animations */
+  --animate-float: float 10s ease-in-out infinite;
+  --animate-glow: glow 4s ease-in-out infinite alternate;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes glow {
+    from {
+      opacity: 0.5;
+      box-shadow: 0 0 20px -10px var(--color-lime);
+    }
+
+    to {
+      opacity: 1;
+      box-shadow: 0 0 30px 0px var(--color-lime);
+    }
+  }
+
+  @keyframes meteor {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 1;
+    }
+
+    70% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: rotate(215deg) translateX(-500px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  --animate-meteor-effect: meteor 5s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --brand-lime: #C8FF00;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Scroll margin for anchor links */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+/* Lenis Smooth Scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Glass Component Borders */
+.glass-border {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ═══════════════════════════════════════════
+   Line Hover Link — 11 animation variants
+═══════════════════════════════════════════ */
+
+/* Base */
+.link-hover {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: currentColor;
+  transition: color 0.3s;
+}
+
+/* ── slide ── */
+.link-hover--slide::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.link-hover--slide:hover::after {
+  width: 100%;
+}
+
+/* ── double ── */
+.link-hover--double::before,
+.link-hover--double::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.35s ease;
+}
+
+.link-hover--double::before {
+  bottom: -2px;
+}
+
+.link-hover--double::after {
+  bottom: -6px;
+  transition-delay: 0.1s;
+}
+
+.link-hover--double:hover::before,
+.link-hover--double:hover::after {
+  width: 100%;
+}
+
+/* ── grow ── */
+.link-hover--grow::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transition: height 0.3s ease;
+}
+
+.link-hover--grow:hover::after {
+  height: 3px;
+}
+
+/* ── strike ── */
+.link-hover--strike>span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.link-hover--strike::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.link-hover--strike:hover>span {
+  transform: scale(1.05);
+}
+
+.link-hover--strike:hover::after {
+  width: 100%;
+}
+
+/* ── fade ── */
+.link-hover--fade::before,
+.link-hover--fade::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: translateY(6px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.link-hover--fade::before {
+  bottom: -2px;
+}
+
+.link-hover--fade::after {
+  bottom: -6px;
+  transition-delay: 0.08s;
+}
+
+.link-hover--fade:hover::before,
+.link-hover--fade:hover::after {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── pulse ── */
+@keyframes linkPulse {
+
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(2.5);
+  }
+}
+
+.link-hover--pulse::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform-origin: bottom;
+}
+
+.link-hover--pulse:hover::after {
+  animation: linkPulse 0.6s ease infinite;
+}
+
+/* ── swap ── */
+.link-hover--swap::before,
+.link-hover--swap::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.link-hover--swap::before {
+  left: 0;
+  width: 0;
+}
+
+.link-hover--swap::after {
+  right: 0;
+  width: 100%;
+}
+
+.link-hover--swap:hover::before {
+  width: 100%;
+}
+
+.link-hover--swap:hover::after {
+  width: 0;
+}
+
+/* ── sweep ── */
+.link-hover--sweep {
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.link-hover--sweep::before {
+  content: "";
+  position: absolute;
+  inset: -4px -8px;
+  border-radius: 4px;
+  background: currentColor;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s ease;
+}
+
+.link-hover--sweep:hover {
+  color: var(--sweep-text, #000);
+}
+
+.link-hover--sweep:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── bounce ── */
+@keyframes linkBounce {
+  0% {
+    transform: scaleX(0);
+  }
+
+  40% {
+    transform: scaleX(1.15);
+  }
+
+  60% {
+    transform: scaleX(0.95);
+  }
+
+  80% {
+    transform: scaleX(1.02);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.link-hover--bounce>span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.link-hover--bounce::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.link-hover--bounce:hover>span {
+  transform: translateY(-1px);
+}
+
+.link-hover--bounce:hover::after {
+  animation: linkBounce 0.5s ease forwards;
+}
+
+/* ── SVG shared (arc + scribble) ── */
+.link-hover__graphic {
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  pointer-events: none;
+  fill: none;
+}
+
+.link-hover__graphic--stroke path {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+/* ── arc ── */
+.link-hover--arc {
+  overflow: visible;
+}
+
+.link-hover--arc>span {
+  display: inline-block;
+}
+
+.link-hover--arc:hover .link-hover__graphic--arc path {
+  stroke-dashoffset: 0;
+}
+
+/* ── scribble ── */
+.link-hover--scribble {
+  overflow: visible;
+}
+
+.link-hover--scribble>span {
+  display: inline-block;
+}
+
+.link-hover--scribble:hover .link-hover__graphic--scribble path {
+  stroke-dashoffset: 0;
 }

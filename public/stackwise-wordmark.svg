@@ -1,0 +1,57 @@
+<svg width="600" height="200" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="200" fill="#0a0a0a"/>
+  
+  <!-- Wordmark -->
+  <g id="stackwise-wordmark" transform="translate(50, 60)">
+    <!-- STACK with gradient -->
+    <text x="0" y="60" 
+          font-family="Inter, sans-serif" 
+          font-size="72" 
+          font-weight="800" 
+          fill="url(#gradient-text)" 
+          letter-spacing="-2">
+      Stack
+    </text>
+    
+    <!-- WISE -->
+    <text x="240" y="60" 
+          font-family="Inter, sans-serif" 
+          font-size="72" 
+          font-weight="800" 
+          fill="white" 
+          letter-spacing="-2">
+      Wise
+    </text>
+    
+    <!-- Underline accent -->
+    <line x1="0" y1="80" x2="200" y2="80" 
+          stroke="url(#gradient-line-word)" 
+          stroke-width="4" 
+          stroke-linecap="round"/>
+    
+    <!-- Tagline -->
+    <text x="2" y="110" 
+          font-family="Inter, sans-serif" 
+          font-size="16" 
+          font-weight="500" 
+          fill="#737373" 
+          letter-spacing="3">
+      DIGITAL SOLUTIONS
+    </text>
+  </g>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient-text" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="gradient-line-word" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

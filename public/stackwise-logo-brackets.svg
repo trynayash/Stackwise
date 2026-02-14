@@ -1,0 +1,63 @@
+<svg width="800" height="300" viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="300" fill="#0a0a0a"/>
+  
+  <!-- Logo Group -->
+  <g id="stackwise-logo-brackets">
+    
+    <!-- Bracket Icon -->
+    <g id="bracket-icon" transform="translate(120, 90)">
+      <!-- Left bracket -->
+      <path d="M 40 0 L 20 0 Q 0 0, 0 20 L 0 100 Q 0 120, 20 120 L 40 120" 
+            stroke="url(#gradient-bracket)" 
+            stroke-width="6" 
+            stroke-linecap="round"
+            fill="none"/>
+      
+      <!-- Right bracket -->
+      <path d="M 80 0 L 100 0 Q 120 0, 120 20 L 120 100 Q 120 120, 100 120 L 80 120" 
+            stroke="url(#gradient-bracket)" 
+            stroke-width="6" 
+            stroke-linecap="round"
+            fill="none"/>
+      
+      <!-- Center stack bars -->
+      <line x1="35" y1="40" x2="85" y2="40" stroke="#00d4ff" stroke-width="4" opacity="0.8"/>
+      <line x1="35" y1="60" x2="85" y2="60" stroke="#06b6d4" stroke-width="4" opacity="0.6"/>
+      <line x1="35" y1="80" x2="85" y2="80" stroke="#a855f7" stroke-width="4" opacity="0.4"/>
+      
+      <!-- Underline -->
+      <line x1="10" y1="140" x2="110" y2="140" stroke="url(#gradient-bracket)" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Text -->
+    <g id="text" transform="translate(280, 110)">
+      <text x="0" y="50" 
+            font-family="JetBrains Mono, monospace" 
+            font-size="68" 
+            font-weight="700" 
+            fill="white" 
+            letter-spacing="2">
+        STACKWISE
+      </text>
+      <text x="0" y="90" 
+            font-family="Inter, sans-serif" 
+            font-size="18" 
+            font-weight="500" 
+            fill="#a3a3a3" 
+            letter-spacing="4">
+        DIGITAL SOLUTIONS
+      </text>
+    </g>
+    
+  </g>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient-bracket" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

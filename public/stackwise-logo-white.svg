@@ -1,0 +1,41 @@
+<svg width="800" height="300" viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background for preview -->
+  <rect width="800" height="300" fill="#0a0a0a"/>
+  
+  <!-- Logo Group - All White -->
+  <g id="stackwise-logo-white">
+    
+    <!-- Icon -->
+    <g id="icon" transform="translate(100, 80)">
+      <rect x="0" y="0" width="80" height="25" rx="6" fill="white"/>
+      <rect x="20" y="35" width="80" height="25" rx="6" fill="white" opacity="0.8"/>
+      <rect x="0" y="70" width="80" height="25" rx="6" fill="white" opacity="0.6"/>
+      
+      <circle cx="40" cy="30" r="3" fill="white"/>
+      <circle cx="60" cy="65" r="3" fill="white"/>
+      <circle cx="40" cy="100" r="3" fill="white"/>
+    </g>
+    
+    <!-- Text -->
+    <g id="text" transform="translate(220, 110)">
+      <text x="0" y="50" 
+            font-family="Inter, sans-serif" 
+            font-size="64" 
+            font-weight="700" 
+            fill="white" 
+            letter-spacing="-1">
+        StackWise
+      </text>
+      <text x="2" y="80" 
+            font-family="Inter, sans-serif" 
+            font-size="14" 
+            font-weight="500" 
+            fill="white" 
+            opacity="0.6"
+            letter-spacing="2">
+        FULL-STACK SOLUTIONS
+      </text>
+    </g>
+    
+  </g>
+</svg>

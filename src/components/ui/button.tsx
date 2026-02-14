@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & MotionProps & {
-    variant?: "primary" | "secondary" | "tertiary";
+    variant?: "primary" | "secondary" | "tertiary" | "outline";
     children: React.ReactNode;
     icon?: boolean;
     glowColor?: string;
@@ -51,6 +51,11 @@ export function Button({
         tertiary: cn(
             "rounded-lg px-4 py-2 text-[#C8FF00]",
             "hover:text-[#D4FF33] bg-transparent"
+        ),
+        outline: cn(
+            "rounded-full px-8 py-4 border-2 bg-transparent",
+            "border-white/20 text-white",
+            "hover:border-[#C8FF00] hover:text-[#C8FF00] transition-colors"
         ),
     };
 

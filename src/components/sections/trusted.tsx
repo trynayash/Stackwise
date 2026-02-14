@@ -31,7 +31,7 @@ export function Trusted() {
                         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10" />
 
                         <motion.div
-                            className="flex items-center gap-24 md:gap-32 whitespace-nowrap"
+                            className="flex items-center gap-12 md:gap-32 whitespace-nowrap"
                             animate={{ x: ["0%", "-50%"] }}
                             transition={{ duration: 35, ease: "linear", repeat: Infinity }}
                         >

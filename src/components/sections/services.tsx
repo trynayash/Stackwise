@@ -72,22 +72,24 @@ export function Services() {
                             className="group border-b border-white/5 py-10 md:py-12 cursor-pointer hover:bg-white/[0.01] transition-colors duration-500"
                             onClick={scrollToPortfolio}
                         >
-                            <div className="flex items-start md:items-center justify-between gap-6 flex-col md:flex-row">
-                                {/* Left: Number + Title */}
-                                <div className="flex items-center gap-8">
-                                    <span className="text-white/10 text-sm font-mono w-8 flex-shrink-0">{service.num}</span>
-                                    <div className="w-12 h-12 rounded-full bg-white/[0.03] border border-white/5 flex items-center justify-center group-hover:bg-[#C8FF00]/10 group-hover:border-[#C8FF00]/20 transition-all duration-500 flex-shrink-0">
-                                        <service.icon className="text-white/30 group-hover:text-[#C8FF00] transition-colors duration-500" size={20} />
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8">
+                                {/* Left: Number + Icon + Title */}
+                                <div className="flex items-center gap-4 md:gap-8 w-full md:w-auto">
+                                    <span className="text-white/10 text-xs md:text-sm font-mono w-6 md:w-8 flex-shrink-0">{service.num}</span>
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/[0.03] border border-white/5 flex items-center justify-center group-hover:bg-[#C8FF00]/10 group-hover:border-[#C8FF00]/20 transition-all duration-500 flex-shrink-0">
+                                        <service.icon className="text-white/30 group-hover:text-[#C8FF00] transition-colors duration-500 w-4 h-4 md:w-5 md:h-5" />
                                     </div>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-[#C8FF00] transition-colors duration-300">{service.title}</h3>
+                                    <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-white group-hover:text-[#C8FF00] transition-colors duration-300 break-words max-w-[70%] md:max-w-none">{service.title}</h3>
                                 </div>
 
                                 {/* Right: Stat + Arrow */}
-                                <div className="flex items-center gap-8 md:gap-12 pl-16 md:pl-0">
+                                <div className="flex items-center justify-between md:justify-end gap-4 md:gap-12 w-full md:w-auto pl-10 md:pl-0 mt-2 md:mt-0">
                                     <p className="text-white/20 text-sm max-w-xs hidden lg:block">{service.description}</p>
-                                    <span className="text-[#C8FF00]/40 text-xs font-mono whitespace-nowrap">{service.stat}</span>
-                                    <div className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center group-hover:border-[#C8FF00]/30 group-hover:bg-[#C8FF00]/5 transition-all duration-500 flex-shrink-0">
-                                        <ArrowUpRight size={16} className="text-white/20 group-hover:text-[#C8FF00] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
+                                    <div className="flex items-center gap-4 ml-auto md:ml-0">
+                                        <span className="text-[#C8FF00]/40 text-xs font-mono whitespace-nowrap">{service.stat}</span>
+                                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/5 flex items-center justify-center group-hover:border-[#C8FF00]/30 group-hover:bg-[#C8FF00]/5 transition-all duration-500 flex-shrink-0">
+                                            <ArrowUpRight className="w-4 h-4 text-white/20 group-hover:text-[#C8FF00] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>

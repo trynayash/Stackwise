@@ -136,7 +136,7 @@ export function Hero() {
             ═══════════════════════════════════════════ */}
             <motion.div
                 style={{ y, opacity }}
-                className="relative z-10 flex flex-col items-center justify-center text-center flex-1 px-6 pt-4 pb-8"
+                className="relative z-10 flex flex-col items-center justify-center text-center flex-1 px-6 pt-24 pb-8"
             >
                 {/* Service Icon Badges — 3 glowing floating icons */}
                 <motion.div

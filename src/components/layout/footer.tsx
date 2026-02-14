@@ -99,10 +99,19 @@ export function Footer() {
                         <div>
                             <h3 className="text-xs font-bold text-white/40 uppercase tracking-[0.2em] mb-8">Connect</h3>
                             <ul className="space-y-4">
-                                {['Twitter', 'LinkedIn', 'GitHub'].map((item) => (
-                                    <li key={item}>
-                                        <Link href="#" className="text-white/60 hover:text-[#b6ff00] text-sm transition-colors block py-1">
-                                            {item}
+                                {[
+                                    { name: "Twitter", href: "https://twitter.com/stackwise" },
+                                    { name: "LinkedIn", href: "https://linkedin.com/company/stackwise" },
+                                    { name: "GitHub", href: "https://github.com/trynayash/Stackwise" }
+                                ].map((item) => (
+                                    <li key={item.name}>
+                                        <Link
+                                            href={item.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-white/60 hover:text-[#b6ff00] text-sm transition-colors block py-1"
+                                        >
+                                            {item.name}
                                         </Link>
                                     </li>
                                 ))}

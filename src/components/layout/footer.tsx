@@ -5,6 +5,9 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LineHoverLink } from "@/components/ui/line-hover-link";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export function Footer() {
     const scrollTo = (id: string) => (e: React.MouseEvent) => {
@@ -13,6 +16,69 @@ export function Footer() {
     };
 
     const [email, setEmail] = React.useState("");
+    const isMobile = useMediaQuery("(max-width: 768px)");
+
+    // Animation controls for the footer logo
+    const [isAnimating, setIsAnimating] = React.useState(false);
+
+    // Particle interface
+    type Particle = {
+        id: number;
+        x: number;
+        y: number;
+        size: number;
+        color: string;
+        rotation: number;
+    };
+
+    const [particles, setParticles] = React.useState<Particle[]>([]);
+
+    const handleLogoClick = () => {
+        if (!isMobile || isAnimating) return;
+
+        setIsAnimating(true);
+
+        // Generate particles
+        const newParticles: Particle[] = [];
+        const colors = ["#C8FF00", "#ffffff", "#3d6600"];
+        for (let i = 0; i < 40; i++) {
+            newParticles.push({
+                id: i,
+                x: (Math.random() - 0.5) * 600, // Wider spread for ballistic effect
+                y: (Math.random() - 0.5) * 600,
+                size: Math.random() * 12 + 4,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                rotation: Math.random() * 360,
+            });
+        }
+        setParticles(newParticles);
+
+        // Reset after animation
+        setTimeout(() => {
+            setIsAnimating(false);
+            setParticles([]);
+        }, 2000);
+    };
+
+    const logoVariants = {
+        initial: { x: 0, y: 0, opacity: 1, rotate: 0, scale: 1 },
+        explode: () => ({
+            x: (Math.random() - 0.5) * 800,
+            y: (Math.random() - 0.5) * 800,
+            opacity: 0,
+            rotate: Math.random() * 720 - 360,
+            scale: 0,
+            transition: { duration: 0.8, ease: "circOut" }
+        }),
+        return: {
+            x: 0,
+            y: 0,
+            opacity: 1,
+            rotate: 0,
+            scale: 1,
+            transition: { duration: 0.6, ease: "backOut" }
+        }
+    };
 
     return (
         <footer className="relative bg-[#050505] pt-20 md:pt-32 pb-10 overflow-hidden border-t border-white/5" role="contentinfo">
@@ -121,15 +187,77 @@ export function Footer() {
                 </div>
 
                 {/* Bottom Section: Massive Brand Name */}
-                {/* Bottom Section: Massive Brand Name */}
                 <div className="pt-24 pb-8 flex justify-center">
-                    <h1
-                        className="text-[14vw] leading-[0.8] font-medium tracking-tight text-center select-none group cursor-default"
-                        style={{ fontFamily: "'Oughter', sans-serif" }}
+                    <div
+                        className="relative cursor-pointer md:cursor-default select-none overflow-visible"
+                        onClick={handleLogoClick}
                     >
-                        <span className="text-white/20 mix-blend-overlay transition-all duration-700 group-hover:text-[#b6ff00] group-hover:mix-blend-normal group-hover:opacity-100">STACK</span>
-                        <span className="text-white/20 mix-blend-overlay transition-all duration-700 group-hover:text-white group-hover:mix-blend-normal group-hover:opacity-100">WISE</span>
-                    </h1>
+                        {/* Shockwave for impact */}
+                        {isAnimating && (
+                            <motion.div
+                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full border-[10px] border-[#C8FF00] blur-md pointer-events-none"
+                                initial={{ scale: 0, opacity: 1 }}
+                                animate={{ scale: 5, opacity: 0, borderWidth: 0 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                            />
+                        )}
+
+                        {/* Explosion Particles */}
+                        {particles.map((particle) => (
+                            <motion.div
+                                key={particle.id}
+                                className="absolute top-1/2 left-1/2 rounded-full pointer-events-none"
+                                style={{
+                                    width: particle.size,
+                                    height: particle.size,
+                                    backgroundColor: particle.color,
+                                    boxShadow: `0 0 ${particle.size * 2}px ${particle.color}`,
+                                }}
+                                initial={{ x: 0, y: 0, opacity: 1, scale: 1, rotate: 0 }}
+                                animate={{
+                                    x: particle.x,
+                                    y: particle.y,
+                                    opacity: 0,
+                                    scale: 0,
+                                    rotation: particle.rotation
+                                }}
+                                transition={{
+                                    duration: 1.5,
+                                    ease: "circOut",
+                                }}
+                            />
+                        ))}
+
+                        <h1
+                            className="text-[14vw] leading-[0.8] font-medium tracking-tight text-center flex items-center justify-center gap-[0.5vw]"
+                            style={{ fontFamily: "'Oughter', sans-serif" }}
+                        >
+                            {"STACK".split("").map((char, i) => (
+                                <motion.span
+                                    key={`stack-${i}`}
+                                    className="inline-block relative text-[#C8FF00] mix-blend-normal"
+                                    variants={logoVariants}
+                                    initial="initial"
+                                    animate={isAnimating ? "explode" : "return"}
+                                    style={{ display: "inline-block" }}
+                                >
+                                    {char}
+                                </motion.span>
+                            ))}
+                            {"WISE".split("").map((char, i) => (
+                                <motion.span
+                                    key={`wise-${i}`}
+                                    className="inline-block relative text-white mix-blend-normal"
+                                    variants={logoVariants}
+                                    initial="initial"
+                                    animate={isAnimating ? "explode" : "return"}
+                                    style={{ display: "inline-block" }}
+                                >
+                                    {char}
+                                </motion.span>
+                            ))}
+                        </h1>
+                    </div>
                 </div>
             </div>
         </footer>

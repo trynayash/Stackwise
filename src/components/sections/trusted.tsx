@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 const logos = [
     { src: "/logos/nextjs.svg", name: "Next.js" },
@@ -17,6 +18,8 @@ const logos = [
 ];
 
 export function Trusted() {
+    const isMobile = useMediaQuery("(max-width: 768px)");
+
     return (
         <section className="py-16 relative z-10 border-y border-white/5" aria-label="Our Technology Stack">
             <div className="container mx-auto px-6">
@@ -33,7 +36,7 @@ export function Trusted() {
                         <motion.div
                             className="flex items-center gap-12 md:gap-32 whitespace-nowrap"
                             animate={{ x: ["0%", "-50%"] }}
-                            transition={{ duration: 35, ease: "linear", repeat: Infinity }}
+                            transition={{ duration: isMobile ? 10 : 20, ease: "linear", repeat: Infinity }}
                         >
                             {[...logos, ...logos].map((logo, i) => (
                                 <img
@@ -42,6 +45,7 @@ export function Trusted() {
                                     alt={logo.name}
                                     className="h-10 md:h-12 w-auto object-contain opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-500 flex-shrink-0"
                                     loading="lazy"
+                                    draggable={false}
                                 />
                             ))}
                         </motion.div>

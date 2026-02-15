@@ -90,7 +90,7 @@ export function Footer() {
             rotate: Math.random() * 720 - 360,
             scale: 0,
             filter: "blur(4px)",
-            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
         }),
         return: {
             x: 0,
@@ -100,7 +100,7 @@ export function Footer() {
             scale: 1,
             color: "rgba(255, 255, 255, 0.2)", // Return to gray
             filter: "blur(0px)",
-            transition: { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }
+            transition: { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] as const }
         }
     };
 
@@ -243,11 +243,11 @@ export function Footer() {
                                     y: particle.y,
                                     opacity: 0,
                                     scale: 0,
-                                    rotation: particle.rotation
+                                    rotate: particle.rotation
                                 }}
                                 transition={{
                                     duration: 1.5,
-                                    ease: "circOut",
+                                    ease: "easeOut",
                                 }}
                             />
                         ))}

@@ -19,7 +19,7 @@ export function Footer() {
     const isMobile = useMediaQuery("(max-width: 768px)");
 
     // Animation controls for the footer logo
-    const [isAnimating, setIsAnimating] = React.useState(false);
+    const [animationPhase, setAnimationPhase] = React.useState<"idle" | "color" | "explode" | "return">("idle");
 
     // Particle interface
     type Particle = {
@@ -34,40 +34,62 @@ export function Footer() {
     const [particles, setParticles] = React.useState<Particle[]>([]);
 
     const handleLogoClick = () => {
-        if (!isMobile || isAnimating) return;
+        if (!isMobile || animationPhase !== "idle") return;
 
-        setIsAnimating(true);
+        // Phase 1: Reveal Color
+        setAnimationPhase("color");
 
-        // Generate particles
-        const newParticles: Particle[] = [];
-        const colors = ["#C8FF00", "#ffffff", "#3d6600"];
-        for (let i = 0; i < 40; i++) {
-            newParticles.push({
-                id: i,
-                x: (Math.random() - 0.5) * 600, // Wider spread for ballistic effect
-                y: (Math.random() - 0.5) * 600,
-                size: Math.random() * 12 + 4,
-                color: colors[Math.floor(Math.random() * colors.length)],
-                rotation: Math.random() * 360,
-            });
-        }
-        setParticles(newParticles);
-
-        // Reset after animation
+        // Phase 2: Explode (after short delay to show color)
         setTimeout(() => {
-            setIsAnimating(false);
+            // Generate particles
+            const newParticles: Particle[] = [];
+            const colors = ["#C8FF00", "#ffffff", "#3d6600"];
+            for (let i = 0; i < 40; i++) {
+                newParticles.push({
+                    id: i,
+                    x: (Math.random() - 0.5) * 600, // Wider spread
+                    y: (Math.random() - 0.5) * 600,
+                    size: Math.random() * 12 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360,
+                });
+            }
+            setParticles(newParticles);
+            setAnimationPhase("explode");
+        }, 600);
+
+        // Phase 3: Return (reassemble)
+        setTimeout(() => {
+            setAnimationPhase("return");
+        }, 2200);
+
+        // Reset to idle
+        setTimeout(() => {
+            setAnimationPhase("idle");
             setParticles([]);
-        }, 2000);
+        }, 3500);
     };
 
     const logoVariants = {
-        initial: { x: 0, y: 0, opacity: 1, rotate: 0, scale: 1 },
+        idle: {
+            x: 0, y: 0, opacity: 1, rotate: 0, scale: 1,
+            color: "rgba(255, 255, 255, 0.2)", // Grayscale/Dimmed
+            filter: "blur(0px)",
+            transition: { duration: 0.5 }
+        },
+        color: (isStack: boolean) => ({
+            color: isStack ? "#C8FF00" : "#ffffff", // Neon for Stack, White for Wise
+            scale: 1.05,
+            filter: "drop-shadow(0 0 10px rgba(200, 255, 0, 0.5))",
+            transition: { duration: 0.4 }
+        }),
         explode: () => ({
             x: (Math.random() - 0.5) * 800,
             y: (Math.random() - 0.5) * 800,
             opacity: 0,
             rotate: Math.random() * 720 - 360,
             scale: 0,
+            filter: "blur(4px)",
             transition: { duration: 0.8, ease: "circOut" }
         }),
         return: {
@@ -76,7 +98,9 @@ export function Footer() {
             opacity: 1,
             rotate: 0,
             scale: 1,
-            transition: { duration: 0.6, ease: "backOut" }
+            color: "rgba(255, 255, 255, 0.2)", // Return to gray
+            filter: "blur(0px)",
+            transition: { duration: 0.8, ease: "backOut" }
         }
     };
 
@@ -193,7 +217,7 @@ export function Footer() {
                         onClick={handleLogoClick}
                     >
                         {/* Shockwave for impact */}
-                        {isAnimating && (
+                        {animationPhase === "explode" && (
                             <motion.div
                                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full border-[10px] border-[#C8FF00] blur-md pointer-events-none"
                                 initial={{ scale: 0, opacity: 1 }}
@@ -235,10 +259,11 @@ export function Footer() {
                             {"STACK".split("").map((char, i) => (
                                 <motion.span
                                     key={`stack-${i}`}
-                                    className="inline-block relative text-[#C8FF00] mix-blend-normal"
+                                    className="inline-block relative mix-blend-normal"
                                     variants={logoVariants}
-                                    initial="initial"
-                                    animate={isAnimating ? "explode" : "return"}
+                                    initial="idle"
+                                    animate={animationPhase}
+                                    custom={true} // Custom prop to indicate it is "Stack" part
                                     style={{ display: "inline-block" }}
                                 >
                                     {char}
@@ -247,10 +272,11 @@ export function Footer() {
                             {"WISE".split("").map((char, i) => (
                                 <motion.span
                                     key={`wise-${i}`}
-                                    className="inline-block relative text-white mix-blend-normal"
+                                    className="inline-block relative mix-blend-normal"
                                     variants={logoVariants}
-                                    initial="initial"
-                                    animate={isAnimating ? "explode" : "return"}
+                                    initial="idle"
+                                    animate={animationPhase}
+                                    custom={false} // Custom prop to indicate it is "Wise" part (not Stack)
                                     style={{ display: "inline-block" }}
                                 >
                                     {char}

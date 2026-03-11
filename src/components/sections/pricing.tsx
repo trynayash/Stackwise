@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { SectionHeading, SubHeading } from "@/components/ui/typography";
 import { pricing } from "@/lib/data";
 import { Check, ChevronDown, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -25,7 +24,7 @@ export function Pricing() {
         if (tz.includes("Kolkata") || tz.includes("Calcutta") || tz.includes("India")) setCurrency("inr");
     }, []);
 
-    const scrollToContact = (planTitle: string) => (e: React.MouseEvent) => {
+    const scrollToContact = () => (e: React.MouseEvent) => {
         e.preventDefault();
         document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
     };
@@ -73,8 +72,16 @@ export function Pricing() {
                                         </li>
                                     ))}
                                 </ul>
-                                <Button variant={plan.highlight ? "primary" : "secondary"} className="w-full" onClick={scrollToContact(plan.title)}>
-                                    Choose {plan.title}
+                                <Button
+                                    onClick={scrollToContact()}
+                                    className={cn(
+                                        "w-full h-14 mt-6 text-base font-bold",
+                                        plan.highlight
+                                            ? "bg-[#C8FF00] text-black hover:bg-[#D4FF33] hover:shadow-[0_0_20px_rgba(200,255,0,0.4)] border-none"
+                                            : "bg-[#111] text-white border border-[#333] hover:border-[#C8FF00] hover:text-[#C8FF00]"
+                                    )}
+                                >
+                                    {plan.title === "Enterprise" ? "Let&apos;s Talk" : "Get Started"}
                                 </Button>
                             </Card>
                         </motion.div>
@@ -83,7 +90,7 @@ export function Pricing() {
 
                 <motion.div className="mt-12 text-center flex items-center justify-center gap-2 text-white/30 text-sm" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
                     <Shield size={16} className="text-[#C8FF00]/60" />
-                    <span>100% Satisfaction Guaranteed — Full refund if we don't deliver</span>
+                    <span>100% Satisfaction Guaranteed — Full refund if we don&apos;t deliver</span>
                 </motion.div>
 
                 <div className="mt-20 max-w-3xl mx-auto">

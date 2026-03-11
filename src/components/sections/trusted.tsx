@@ -39,14 +39,16 @@ export function Trusted() {
                             transition={{ duration: isMobile ? 10 : 20, ease: "linear", repeat: Infinity }}
                         >
                             {[...logos, ...logos].map((logo, i) => (
-                                <img
-                                    key={`${logo.name}-${i}`}
-                                    src={logo.src}
-                                    alt={logo.name}
-                                    className="h-10 md:h-12 w-auto object-contain opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-500 flex-shrink-0"
-                                    loading="lazy"
-                                    draggable={false}
-                                />
+                                <React.Fragment key={`${logo.name}-${i}`}>
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img
+                                        src={logo.src}
+                                        alt={logo.name}
+                                        className="h-10 md:h-12 w-auto object-contain opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-500 flex-shrink-0"
+                                        loading="lazy"
+                                        draggable={false}
+                                    />
+                                </React.Fragment>
                             ))}
                         </motion.div>
                     </div>

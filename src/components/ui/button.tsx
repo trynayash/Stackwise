@@ -1,15 +1,14 @@
 "use client";
 
 import React from "react";
-import { motion, type MotionProps } from "framer-motion";
+import { motion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & MotionProps & {
+type ButtonProps = HTMLMotionProps<"button"> & {
     variant?: "primary" | "secondary" | "tertiary" | "outline";
     children: React.ReactNode;
     icon?: boolean;
-    glowColor?: string;
 };
 
 export function Button({
@@ -17,7 +16,6 @@ export function Button({
     variant = "primary",
     children,
     icon = false,
-    glowColor,
     whileTap = { scale: 0.97 },
     transition = {
         stiffness: 20,
@@ -81,8 +79,8 @@ export function Button({
                     maskImage:
                         "linear-gradient(-75deg, white calc(var(--mask-x) + 20%), transparent calc(var(--mask-x) + 30%), white calc(var(--mask-x) + 100%))",
                 }}
-                initial={{ ["--mask-x" as string]: "100%" } as any}
-                animate={{ ["--mask-x" as string]: "-100%" } as any}
+                initial={{ "--mask-x": "100%" } as any}
+                animate={{ "--mask-x": "-100%" } as any}
                 transition={{ repeat: Infinity, duration: 1, ease: "linear", repeatDelay: 1 }}
             >
                 {children}

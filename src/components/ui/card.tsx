@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardProps extends HTMLMotionProps<"div"> {
     variant?: "glass" | "neon";
     children: React.ReactNode;
     spotlight?: boolean;
@@ -44,7 +44,7 @@ export function Card({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             whileHover={variant === "neon" ? { y: -5 } : {}}
-            {...props as any}
+            {...props}
         >
             {spotlight && (
                 <div

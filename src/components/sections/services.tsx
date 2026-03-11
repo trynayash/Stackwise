@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { SectionHeading, SubHeading } from "@/components/ui/typography";
 import { Globe, ShoppingCart, TrendingUp, Cpu, ArrowUpRight } from "lucide-react";
 
 const services = [

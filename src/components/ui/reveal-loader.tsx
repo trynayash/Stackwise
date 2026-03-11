@@ -92,7 +92,7 @@ const RevealLoader = ({
             const moveProps = getAnimationProperties(movementDirection);
             const staggerConfig = {
                 each: 0.1,
-                from: getStaggerFrom(staggerOrder) as any,
+                from: getStaggerFrom(staggerOrder) as "start" | "end" | "center" | "edges" | number,
             };
 
             tl.to(".name-text span", {

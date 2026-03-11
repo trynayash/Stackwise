@@ -5,10 +5,15 @@ import { useLoading } from "@/components/providers/loading-context";
 import { Hero } from "@/components/sections/hero";
 import { Trusted } from "@/components/sections/trusted";
 import { Services } from "@/components/sections/services";
+import { ProcessTimeline } from "@/components/sections/process-timeline";
 import { Portfolio } from "@/components/sections/portfolio";
 import { Pricing } from "@/components/sections/pricing";
+import { FAQ } from "@/components/sections/faq";
 import { Testimonials } from "@/components/sections/testimonials";
+import { VideoTestimonials } from "@/components/sections/video-testimonials";
+import { Founder } from "@/components/sections/founder";
 import { About } from "@/components/sections/about";
+import { TechStack } from "@/components/sections/tech-stack";
 import { Contact } from "@/components/sections/contact";
 import RevealLoader from "@/components/ui/reveal-loader";
 
@@ -48,10 +53,15 @@ export default function Home() {
             <Hero />
             <Trusted />
             <Services />
+            <ProcessTimeline />
             <Portfolio />
             <Pricing />
+            <FAQ />
             <Testimonials />
+            <VideoTestimonials />
+            <Founder />
             <About />
+            <TechStack />
             <Contact />
           </motion.div>
         )}
@@ -59,4 +69,3 @@ export default function Home() {
     </main>
   );
 }
-

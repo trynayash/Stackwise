@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
 
                     <div className="prose prose-invert prose-lg max-w-none text-white/70">
                         <p className="leading-relaxed mb-8">
-                            At Stackwise ("we", "our", or "us"), we respect your privacy and are committed to protecting the personal data we hold about you. This policy explains how we collect, use, and share your information when you visit our website or use our services.
+                            At Stackwise (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;), we respect your privacy and are committed to protecting the personal data we hold about you. This policy explains how we collect, use, and share your information when you visit our website or use our services.
                         </p>
 
                         <h2 className="text-2xl font-semibold text-white mt-16 mb-6">1. Information We Collect</h2>

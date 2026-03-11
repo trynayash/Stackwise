@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { SectionHeading, SubHeading } from "@/components/ui/typography";
 import { testimonials } from "@/lib/data";
 import { Card } from "@/components/ui/card";
 import { Quote, Star } from "lucide-react";
@@ -18,7 +17,7 @@ export function Testimonials() {
             <div className="container mx-auto px-6 mb-20 text-center relative z-10">
                 <span className="text-[#C8FF00] text-[11px] font-mono tracking-[0.2em] uppercase mb-4 block">Testimonials</span>
                 <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] mb-4">What Clients<br /><span className="text-white/25">Say.</span></h2>
-                <p className="text-white/20 text-xs font-mono mt-4 tracking-wider">Names shortened to protect confidentiality</p>
+                <p className="text-white/20 text-xs font-mono mt-4 tracking-wider">Verified client feedback from real projects</p>
             </div>
 
             <div className="relative z-10">
@@ -54,6 +53,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
         <Card variant="glass" className="w-[320px] sm:w-[400px] md:w-[500px] p-6 sm:p-8 flex-shrink-0 whitespace-normal">
             <div className="flex items-start gap-4 mb-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden border border-white/10">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={testimonial.image} alt={`${testimonial.name}`} className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div>
@@ -63,7 +63,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
                 <Quote className="ml-auto text-[#C8FF00]/15" size={24} />
             </div>
             <StarRating rating={testimonial.rating} />
-            <p className="text-white/70 leading-relaxed text-sm md:text-base">"{testimonial.content}"</p>
+            <p className="text-white/70 leading-relaxed text-sm md:text-base">&quot;{testimonial.content}&quot;</p>
         </Card>
     );
 }

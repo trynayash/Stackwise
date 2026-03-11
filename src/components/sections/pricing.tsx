@@ -1,23 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { pricing } from "@/lib/data";
-import { Check, ChevronDown, Shield } from "lucide-react";
+import { Check, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const faqs = [
-    { q: "What's the typical project timeline?", a: "Most projects take 4–8 weeks from kickoff to launch. Complex enterprise apps may take 12+ weeks. We provide a detailed timeline during our initial consultation." },
-    { q: "Do you work with startups outside India?", a: "Absolutely. We work with clients globally. Our team operates in IST and we're flexible with scheduling across time zones." },
-    { q: "What happens after the project is delivered?", a: "Every plan includes a support period (1–3 months). After that, we offer ongoing maintenance retainers. You fully own the code and assets we deliver." },
-    { q: "Can I see real case studies before committing?", a: "Yes! Once we schedule an introductory call, we'll share detailed case studies relevant to your industry and project scope." },
-];
 
 export function Pricing() {
     const [currency, setCurrency] = React.useState<"usd" | "inr">("usd");
-    const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     React.useEffect(() => {
         const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -93,26 +85,6 @@ export function Pricing() {
                     <span>100% Satisfaction Guaranteed — Full refund if we don&apos;t deliver</span>
                 </motion.div>
 
-                <div className="mt-20 max-w-3xl mx-auto">
-                    <h3 className="text-xl font-bold text-white text-center mb-10">Frequently Asked Questions</h3>
-                    <div className="space-y-4">
-                        {faqs.map((faq, i) => (
-                            <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="border border-white/5 rounded-xl overflow-hidden">
-                                <button className="w-full flex items-center justify-between p-5 text-left text-white/80 hover:text-white transition-colors" onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i}>
-                                    <span className="font-medium text-sm">{faq.q}</span>
-                                    <ChevronDown size={18} className={cn("transition-transform duration-300 flex-shrink-0 ml-4", openFaq === i ? "rotate-180" : "")} />
-                                </button>
-                                <AnimatePresence>
-                                    {openFaq === i && (
-                                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
-                                            <p className="px-5 pb-5 text-sm text-white/50 leading-relaxed">{faq.a}</p>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
             </div>
         </section>
     );

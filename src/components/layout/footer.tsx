@@ -2,12 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { LineHoverLink } from "@/components/ui/line-hover-link";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 export function Footer() {
     const scrollTo = (id: string) => (e: React.MouseEvent) => {

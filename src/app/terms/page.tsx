@@ -48,7 +48,7 @@ export default function TermsOfService() {
 
                         <h2 className="text-2xl font-semibold text-white mt-16 mb-6">4. Changes to Terms</h2>
                         <p className="mb-8">
-                            We reserve the right to modify these Terms of Service at any time. We will provide notice of significant changes by updating the "Last Updated" date at the top of this page. Your continued use of the services confirms your acceptance of these changes.
+                            We reserve the right to modify these Terms of Service at any time. We will provide notice of significant changes by updating the &quot;Last Updated&quot; date at the top of this page. Your continued use of the services confirms your acceptance of these changes.
                         </p>
 
                         <h2 className="text-2xl font-semibold text-white mt-16 mb-6">5. Governing Law</h2>
